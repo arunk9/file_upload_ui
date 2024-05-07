@@ -1,0 +1,20 @@
+<div class="container mt-4">
+  <app-import (fileSelected)="onFileSelected($event)"></app-import>
+  <div *ngIf="batchId" class="container mt-4">
+    <input type="text" class="form-control mb-3" placeholder="Search Users"  [(ngModel)]="searchTerm" (input)="filter()">
+    <table class="table">
+      <thead>
+        <tr>
+          <th (click)="sortBy('username')">Username <i [class]="userNameSortClass" aria-hidden="true"></i></th>
+          <th (click)="sortBy('email')">Email <i [class]="emailSortClass" aria-hidden="true"></i></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
